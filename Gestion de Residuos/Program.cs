@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using GestionResiduos.DataContext;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ApplicationDbContext>(opc =>
+    opc.UseSqlite(builder.Configuration.GetConnectionString("DefaulConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
