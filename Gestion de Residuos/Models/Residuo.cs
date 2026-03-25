@@ -17,7 +17,7 @@ namespace GestionResiduos.Models
 
         [Range(0.1, 10000)]
         [Display(Name = "Peso (KG)")]
-        public double PespResiduo { get; set; }
+        public double PesoResiduo { get; set; }
 
         [DataType(DataType.Date)]
         [Display(Name = "Fecha de Recoleccion")]

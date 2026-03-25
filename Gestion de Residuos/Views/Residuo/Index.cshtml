@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GestionResiduos.Models.Residuo>
+
+@{
+    <div class="container">
+        <h2>Listado de Residuos</h2>
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Nuevo Residuo</a>
+        </p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Peso (KG)</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.NameResiduo</td>
+                        <td>@item.TipoResiduo</td>
+                        <td>@item.PesoResiduo</td>
+                        <td>@item.FechaRecoleccionResiduo.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
