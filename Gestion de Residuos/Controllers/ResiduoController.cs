@@ -38,5 +38,28 @@ namespace GestionResiduos.Controllers
             }
             return View(residuo);
         }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+            var residuo = await _context.Residuos.FindAsync(id);
+            if (residuo == null) return NotFound();
+            return PartialView("_EditParcial", residuo);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Residuo residuo)
+        {
+            if (ModelState.IsValid) { _context.Update(residuo); await _context.SaveChangesAsync(); return RedirectToAction(nameof(Index)); }
+            return View(residuo);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var residuo = await _context.Residuos.FindAsync(id);
+            if(residuo !=null) _context.Residuos.Remove(residuo);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

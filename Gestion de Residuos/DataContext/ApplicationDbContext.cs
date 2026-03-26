@@ -15,19 +15,19 @@ namespace GestionResiduos.DataContext
             modelBuilder.Entity<Residuo>().HasData(
                 new Residuo
                 {
-                    IdResiduo=1,
-                    NameResiduo="Cascara de Guineo",
-                    TipoResiduo="Organico",
-                    PesoResiduo=0.5,
-                    FechaRecoleccionResiduo=new DateTime(2026, 3, 25)
+                    IdResiduo = 1,
+                    NameResiduo = "Cascara de Guineo",
+                    TipoResiduo = "Organico",
+                    PesoResiduo = 0.5,
+                    FechaRecoleccionResiduo = new DateTime(2026, 3, 25)
                 },
                 new Residuo
                 {
-                    IdResiduo=2,
-                    NameResiduo="Botella de Vidrio rota",
-                    TipoResiduo="Vidrio",
-                    PesoResiduo=1,
-                    FechaRecoleccionResiduo= new DateTime(2026, 3, 25)
+                    IdResiduo = 2,
+                    NameResiduo = "Botella de Vidrio rota",
+                    TipoResiduo = "Vidrio",
+                    PesoResiduo = 1,
+                    FechaRecoleccionResiduo = new DateTime(2026, 3, 25)
                 },
                 new Residuo
                 {

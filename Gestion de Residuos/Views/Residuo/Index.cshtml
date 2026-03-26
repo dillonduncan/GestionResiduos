@@ -13,6 +13,7 @@
                     <th>Tipo</th>
                     <th>Peso (KG)</th>
                     <th>Fecha</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,11 +24,56 @@
                         <td>@item.TipoResiduo</td>
                         <td>@item.PesoResiduo</td>
                         <td>@item.FechaRecoleccionResiduo.ToShortDateString()</td>
+                        <td>
+                            <button onclick="abrirModal(@item.IdResiduo)" class="btn btn-warning btn-sm"> <i class="bi bi-pencil-square"></i> </button>
+                            <form asp-action="Delete" asp-route-id="@item.IdResiduo" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar?')">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
+
+    <div class="modal fade" id="modalEdicion" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title">Editar Residuo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="cuerpoModal"></div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        function abrirModal(id){
+            const url = '@Url.Action("Edit", "Residuo")/' + id;
+                   fetch(url)
+                        .then(res => {
+                            if (!res.ok) throw new Error("No se encontró el registro");
+                            return res.text();
+                        })
+                        .then(html => {
+                            document.getElementById('cuerpoModal').innerHTML = html;
+
+                            // CORRECCIÓN: 'bootstrap' con doble 'o'
+                            var modalElement = document.getElementById('modalEdicion');
+                            var myModal = new bootstrap.Modal(modalElement);
+                            myModal.show();
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            alert("Error al cargar los datos: " + err.message);
+                        });
+        }
+    </script>
 }
 
 
