@@ -1,5 +1,32 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model GestionResiduos.Models.Residuo
+
 @{
+    <div class="container">
+        <h2>Registro de Residuos</h2>
+        <form asp-action="Create">
+            <div class="form-group mb-3">
+                <label asp-for="NameResiduo" class="form-label"></label>
+                <input asp-for="NameResiduo" class="form-control"/>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="TipoResiduo" class="form-label"></label>
+                <select asp-for="TipoResiduo" class="form-control">
+                    <option value="Plastico">Plastico</option>
+                    <option value="Organico">Organico</option>
+                    <option value="Papel/Carton">Papel/Carton</option>
+                    <option value="Vidrio">Vidrio</option>
+                </select>
+            </div>
+            <div class="form-grorp mb-3">
+                <label asp-for="PesoResiduo" class="form-label"></label>
+                <input asp-for="PesoResiduo" type="number" step="0.1" class="form-control"/>
+            </div>
+            <div class="form-grorp mb-3">
+                <label asp-for="FechaRecoleccionResiduo" class="form-label"></label>
+                <input asp-for="FechaRecoleccionResiduo" type="date" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a asp-action="Index" asp-controller="Residuo" class="btn btn-secondary">Volver</a>
+        </form>
+    </div>
 }
